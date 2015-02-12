@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940181A8CF44D0018A28D /* AppDelegate.m */; };
+		17B9401B1A8CF44D0018A28D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9401A1A8CF44D0018A28D /* main.m */; };
+		17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401C1A8CF44D0018A28D /* Images.xcassets */; };
+		17B940201A8CF44D0018A28D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401E1A8CF44D0018A28D /* MainMenu.xib */; };
+		17B9402C1A8CF44D0018A28D /* ScratchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9402B1A8CF44D0018A28D /* ScratchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17B940261A8CF44D0018A28D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17B9400A1A8CF44D0018A28D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17B940111A8CF44D0018A28D;
+			remoteInfo = Scratch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17B940121A8CF44D0018A28D /* Scratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B940161A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B940171A8CF44D0018A28D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		17B940181A8CF44D0018A28D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		17B9401A1A8CF44D0018A28D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		17B9401C1A8CF44D0018A28D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		17B9401F1A8CF44D0018A28D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		17B940251A8CF44D0018A28D /* ScratchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScratchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B9402A1A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B9402B1A8CF44D0018A28D /* ScratchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScratchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17B9400F1A8CF44D0018A28D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B940221A8CF44D0018A28D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17B940091A8CF44D0018A28D = {
+			isa = PBXGroup;
+			children = (
+				17B940141A8CF44D0018A28D /* Scratch */,
+				17B940281A8CF44D0018A28D /* ScratchTests */,
+				17B940131A8CF44D0018A28D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		17B940131A8CF44D0018A28D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17B940121A8CF44D0018A28D /* Scratch.app */,
+				17B940251A8CF44D0018A28D /* ScratchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17B940141A8CF44D0018A28D /* Scratch */ = {
+			isa = PBXGroup;
+			children = (
+				17B940171A8CF44D0018A28D /* AppDelegate.h */,
+				17B940181A8CF44D0018A28D /* AppDelegate.m */,
+				17B9401C1A8CF44D0018A28D /* Images.xcassets */,
+				17B9401E1A8CF44D0018A28D /* MainMenu.xib */,
+				17B940151A8CF44D0018A28D /* Supporting Files */,
+			);
+			path = Scratch;
+			sourceTree = "<group>";
+		};
+		17B940151A8CF44D0018A28D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17B940161A8CF44D0018A28D /* Info.plist */,
+				17B9401A1A8CF44D0018A28D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17B940281A8CF44D0018A28D /* ScratchTests */ = {
+			isa = PBXGroup;
+			children = (
+				17B9402B1A8CF44D0018A28D /* ScratchTests.m */,
+				17B940291A8CF44D0018A28D /* Supporting Files */,
+			);
+			path = ScratchTests;
+			sourceTree = "<group>";
+		};
+		17B940291A8CF44D0018A28D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17B9402A1A8CF44D0018A28D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17B940111A8CF44D0018A28D /* Scratch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B9402F1A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "Scratch" */;
+			buildPhases = (
+				17B9400E1A8CF44D0018A28D /* Sources */,
+				17B9400F1A8CF44D0018A28D /* Frameworks */,
+				17B940101A8CF44D0018A28D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scratch;
+			productName = Scratch;
+			productReference = 17B940121A8CF44D0018A28D /* Scratch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17B940241A8CF44D0018A28D /* ScratchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B940321A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "ScratchTests" */;
+			buildPhases = (
+				17B940211A8CF44D0018A28D /* Sources */,
+				17B940221A8CF44D0018A28D /* Frameworks */,
+				17B940231A8CF44D0018A28D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17B940271A8CF44D0018A28D /* PBXTargetDependency */,
+			);
+			name = ScratchTests;
+			productName = ScratchTests;
+			productReference = 17B940251A8CF44D0018A28D /* ScratchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17B9400A1A8CF44D0018A28D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = com.hanks;
+				TargetAttributes = {
+					17B940111A8CF44D0018A28D = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					17B940241A8CF44D0018A28D = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 17B940111A8CF44D0018A28D;
+					};
+				};
+			};
+			buildConfigurationList = 17B9400D1A8CF44D0018A28D /* Build configuration list for PBXProject "Scratch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17B940091A8CF44D0018A28D;
+			productRefGroup = 17B940131A8CF44D0018A28D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17B940111A8CF44D0018A28D /* Scratch */,
+				17B940241A8CF44D0018A28D /* ScratchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17B940101A8CF44D0018A28D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */,
+				17B940201A8CF44D0018A28D /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B940231A8CF44D0018A28D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17B9400E1A8CF44D0018A28D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B9401B1A8CF44D0018A28D /* main.m in Sources */,
+				17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B940211A8CF44D0018A28D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B9402C1A8CF44D0018A28D /* ScratchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17B940271A8CF44D0018A28D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17B940111A8CF44D0018A28D /* Scratch */;
+			targetProxy = 17B940261A8CF44D0018A28D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		17B9401E1A8CF44D0018A28D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17B9401F1A8CF44D0018A28D /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		17B9402D1A8CF44D0018A28D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		17B9402E1A8CF44D0018A28D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		17B940301A8CF44D0018A28D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Scratch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		17B940311A8CF44D0018A28D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Scratch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		17B940331A8CF44D0018A28D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScratchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scratch.app/Contents/MacOS/Scratch";
+			};
+			name = Debug;
+		};
+		17B940341A8CF44D0018A28D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ScratchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scratch.app/Contents/MacOS/Scratch";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17B9400D1A8CF44D0018A28D /* Build configuration list for PBXProject "Scratch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B9402D1A8CF44D0018A28D /* Debug */,
+				17B9402E1A8CF44D0018A28D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17B9402F1A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "Scratch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B940301A8CF44D0018A28D /* Debug */,
+				17B940311A8CF44D0018A28D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17B940321A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "ScratchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B940331A8CF44D0018A28D /* Debug */,
+				17B940341A8CF44D0018A28D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17B9400A1A8CF44D0018A28D /* Project object */;
+}
