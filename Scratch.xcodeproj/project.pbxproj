@@ -12,6 +12,7 @@
 		17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401C1A8CF44D0018A28D /* Images.xcassets */; };
 		17B940201A8CF44D0018A28D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401E1A8CF44D0018A28D /* MainMenu.xib */; };
 		17B9402C1A8CF44D0018A28D /* ScratchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9402B1A8CF44D0018A28D /* ScratchTests.m */; };
+		17B940371A8CF4E00018A28D /* PanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940361A8CF4E00018A28D /* PanelView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		17B940251A8CF44D0018A28D /* ScratchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScratchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B9402A1A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B9402B1A8CF44D0018A28D /* ScratchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScratchTests.m; sourceTree = "<group>"; };
+		17B940351A8CF4E00018A28D /* PanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelView.h; sourceTree = "<group>"; };
+		17B940361A8CF4E00018A28D /* PanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				17B940181A8CF44D0018A28D /* AppDelegate.m */,
 				17B9401C1A8CF44D0018A28D /* Images.xcassets */,
 				17B9401E1A8CF44D0018A28D /* MainMenu.xib */,
+				17B940351A8CF4E00018A28D /* PanelView.h */,
+				17B940361A8CF4E00018A28D /* PanelView.m */,
 				17B940151A8CF44D0018A28D /* Supporting Files */,
 			);
 			path = Scratch;
@@ -212,6 +217,7 @@
 			files = (
 				17B9401B1A8CF44D0018A28D /* main.m in Sources */,
 				17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */,
+				17B940371A8CF4E00018A28D /* PanelView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
