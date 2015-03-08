@@ -58,6 +58,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1799BA411AAC9D1D002397FF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1799BA421AAC9D1D002397FF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1799BA431AAC9D1D002397FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				17B940351A8CF4E00018A28D /* PanelView.h */,
+				17B940361A8CF4E00018A28D /* PanelView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		17B940091A8CF44D0018A28D = {
 			isa = PBXGroup;
 			children = (
@@ -81,10 +104,11 @@
 			children = (
 				17B940171A8CF44D0018A28D /* AppDelegate.h */,
 				17B940181A8CF44D0018A28D /* AppDelegate.m */,
+				1799BA411AAC9D1D002397FF /* Models */,
+				1799BA421AAC9D1D002397FF /* ViewControllers */,
+				1799BA431AAC9D1D002397FF /* Views */,
 				17B9401C1A8CF44D0018A28D /* Images.xcassets */,
 				17B9401E1A8CF44D0018A28D /* MainMenu.xib */,
-				17B940351A8CF4E00018A28D /* PanelView.h */,
-				17B940361A8CF4E00018A28D /* PanelView.m */,
 				17B940151A8CF44D0018A28D /* Supporting Files */,
 			);
 			path = Scratch;
@@ -404,6 +428,7 @@
 				17B940311A8CF44D0018A28D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17B940321A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "ScratchTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +437,7 @@
 				17B940341A8CF44D0018A28D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
