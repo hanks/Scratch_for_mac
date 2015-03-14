@@ -152,6 +152,16 @@ static const NSInteger kDoubleClickCount = 2;
     }
 }
 
+#pragma mark -- Right Mouse Event
+
+- (void)rightMouseDragged:(NSEvent *)theEvent {
+    DDLogInfo(@"right mouse dragged");
+    NSWindow *window = [self window];
+    NSPoint windowOrigin = [window frame].origin;
+    
+    [window setFrameOrigin:NSMakePoint(windowOrigin.x + [theEvent deltaX], windowOrigin.y - [theEvent deltaY])];
+}
+
 # pragma mark -- Touch Evnet
 
 - (void)hideMouseCursor {
@@ -269,14 +279,14 @@ static const NSInteger kDoubleClickCount = 2;
     DDLogInfo(@"magnification value: %lf", magcificaton);
     
     // set window size
-    NSWindow *w = [self window];
+    NSWindow *window = [self window];
     NSRect newRect;
-    newRect.size.width = w.frame.size.width * (magcificaton / 2 + 1.0);
-    newRect.size.height = w.frame.size.height * (magcificaton / 2 + 1.0);
-    newRect.origin.x = w.frame.origin.x;
-    newRect.origin.y = w.frame.origin.y;
+    newRect.size.width = window.frame.size.width * (magcificaton / 2 + 1.0);
+    newRect.size.height = window.frame.size.height * (magcificaton / 2 + 1.0);
+    newRect.origin.x = window.frame.origin.x;
+    newRect.origin.y = window.frame.origin.y;
     
-    [w setFrame:newRect display:YES];
+    [window setFrame:newRect display:YES];
 }
 
 @end
