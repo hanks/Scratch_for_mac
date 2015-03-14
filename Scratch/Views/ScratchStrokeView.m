@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     // init
-    DDLogInfo(@"strove view init");
     self.m_Strokes = [[NSMutableArray alloc] init];
 }
 

@@ -24,8 +24,8 @@ static const CGFloat kFingerCursorAlpha = 0.5f;
 static const NSInteger kDoubleClickCount = 2;
 // width of stroke
 static const CGFloat kStrokeWidth = 2.0f;
-
-#define D_MIN_POINTS 2
+// the min number of point to draw
+static const NSInteger kMinPoints = 2;
 
 @interface PanelView() {
     BOOL m_cursorIsHidden;
@@ -187,7 +187,8 @@ static const CGFloat kStrokeWidth = 2.0f;
     
     if (m_switchIsOn) {
         [self drawFocusRing];
-        [self drawTouchPoint];
+        // not to draw touch point
+        // [self drawTouchPoint];
         [self drawStroke];
     }
 }
@@ -381,7 +382,7 @@ static const CGFloat kStrokeWidth = 2.0f;
             // If the stroke has at least 2 points
             // in it add it to the stroke view
             // object
-            if (l_stroke.m_points.count > D_MIN_POINTS) {
+            if (l_stroke.m_points.count > kMinPoints) {
                 [l_strokeView addStroke: l_stroke];
                 [l_strokeView setNeedsDisplay:YES];
             }
