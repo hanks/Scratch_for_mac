@@ -25,7 +25,6 @@
 @synthesize m_activeTouches;
 
 - (void)awakeFromNib {
-    DDLogInfo(@"here");
     m_activeTouches = [[NSMutableDictionary alloc] init];
     
     // Accept trackpad events
@@ -35,52 +34,36 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    DDLogInfo(@"dddd");
-    
-    // Drawing code here.
     // For each active touch
-//    for (NSTouch *l_touch in m_activeTouches.allValues)
-//    {
-//        // Create a rectangle reference to hold the
-//        // location of the cursor
-//        NSRect l_cursor;
-//        
-//        // Determine where the touch point
-//        NSPoint l_touchNP = [l_touch normalizedPosition];
-//        // Calculate the pixel position of the touch point
-//        l_touchNP.x = l_touchNP.x * [self bounds].size.width;
-//        l_touchNP.y = l_touchNP.y * [self bounds].size.height;
-//        
-//        // Calculate the rectangle around the cursor
-//        l_cursor.origin.x = l_touchNP.x - (D_FINGER_CURSOR_SIZE /
-//                                           2);
-//        l_cursor.origin.y = l_touchNP.y - (D_FINGER_CURSOR_SIZE /
-//                                           2);
-//        l_cursor.size.width = D_FINGER_CURSOR_SIZE;
-//        l_cursor.size.height = D_FINGER_CURSOR_SIZE;
-//        
-//        // Set the color of the cursor
-//        [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
-//                               green: D_FINGER_CURSOR_GREEN
-//                                blue: D_FINGER_CURSOR_BLUE 
-//                               alpha: D_FINGER_CURSOR_ALPHA] set];
-//        
-//        // Draw the cursor as a circle
-//        [[NSBezierPath bezierPathWithOvalInRect: l_cursor] fill];
-//    }
-    
-    // preserve the graphics content
-    [NSGraphicsContext saveGraphicsState];
-    
-    [[NSColor clearColor] set];
-    
-    if ([[self window] firstResponder] == self) {
-        NSSetFocusRingStyle(NSFocusRingAbove);
+    for (NSTouch *l_touch in m_activeTouches.allValues)
+    {
+        // Create a rectangle reference to hold the
+        // location of the cursor
+        NSRect l_cursor;
+        
+        // Determine where the touch point
+        NSPoint l_touchNP = [l_touch normalizedPosition];
+        // Calculate the pixel position of the touch point
+        l_touchNP.x = l_touchNP.x * [self bounds].size.width;
+        l_touchNP.y = l_touchNP.y * [self bounds].size.height;
+        
+        // Calculate the rectangle around the cursor
+        l_cursor.origin.x = l_touchNP.x - (D_FINGER_CURSOR_SIZE /
+                                           2);
+        l_cursor.origin.y = l_touchNP.y - (D_FINGER_CURSOR_SIZE /
+                                           2);
+        l_cursor.size.width = D_FINGER_CURSOR_SIZE;
+        l_cursor.size.height = D_FINGER_CURSOR_SIZE;
+        
+        // Set the color of the cursor
+        [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
+                               green: D_FINGER_CURSOR_GREEN
+                                blue: D_FINGER_CURSOR_BLUE 
+                               alpha: D_FINGER_CURSOR_ALPHA] set];
+        
+        // Draw the cursor as a circle
+        [[NSBezierPath bezierPathWithOvalInRect: l_cursor] fill];
     }
-    
-    [[NSBezierPath bezierPathWithRect:[self bounds]] fill];
-    
-    [NSGraphicsContext restoreGraphicsState];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -88,7 +71,7 @@
 }
 
 - (void)touchesBeganWithEvent:(NSEvent *)event {
-    NSLog(@"began touch");
+    DDLogInfo(@"began touch");
     
     // Get the set of began touches
     NSSet *l_touches =
@@ -109,7 +92,7 @@
 }
 
 - (void)touchesMovedWithEvent:(NSEvent *)event {
-    NSLog(@"move touch");
+    DDLogInfo(@"move touch");
     
     NSSet *l_touches =
     [event touchesMatchingPhase:NSTouchPhaseMoved
@@ -135,7 +118,7 @@
 }
 
 - (void)touchesEndedWithEvent:(NSEvent *)event {
-    NSLog(@"end touch");
+    DDLogInfo(@"end touch");
     
     // Get the set of ended touches
     NSSet *l_touches =
@@ -156,7 +139,7 @@
 }
 
 - (void)touchesCancelledWithEvent:(NSEvent *)event {
-    NSLog(@"cancel touch");
+    DDLogInfo(@"cancel touch");
     
     // Get the set of cancelled touches
     NSSet *l_touches =
