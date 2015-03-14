@@ -45,7 +45,7 @@
                         <items>
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
                                 <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
+                                    <action selector="saveAsAction:" target="3J9-2W-AiQ" id="QBe-M0-w1h"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -57,7 +57,7 @@
                         <items>
                             <menuItem title="Clear" keyEquivalent="r" id="3yc-Zv-x3x">
                                 <connections>
-                                    <action selector="clear:" target="3J9-2W-AiQ" id="etV-lA-3lI"/>
+                                    <action selector="clearAction:" target="3J9-2W-AiQ" id="sNK-Xr-v6r"/>
                                 </connections>
                             </menuItem>
                         </items>

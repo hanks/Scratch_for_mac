@@ -447,8 +447,32 @@ static const NSInteger kMinPoints = 2;
 
 #pragma mark -- Menu Action
 
-- (IBAction)clear:(id)sender {
+- (IBAction)clearAction:(id)sender {
     [(ScratchStrokeView *)[self superview] clear];
+}
+
+- (IBAction)saveAsAction:(id)sender {
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setNameFieldLabel: @"Untitle.png"];
+    [savePanel setMessage: @"Choose the path to save the *png file"];
+    [savePanel setAllowedFileTypes:@[@"png", @"jpeg"]];
+    [savePanel setExtensionHidden:NO];
+    
+    [savePanel beginSheetModalForWindow: self.window
+                      completionHandler: ^(NSInteger result) {
+        if (NSFileHandlingPanelOKButton == result) {
+            NSString *path = [[savePanel URL] path];
+            DDLogInfo(@"save as path = %@", path);
+            // Get the data into a bitmap.
+            NSView *strokeView = [self superview];
+            [strokeView lockFocus];
+            NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:[strokeView bounds]];
+            [strokeView unlockFocus];
+            NSData *data = [rep TIFFRepresentation];
+            
+            [data writeToFile:path atomically:YES];
+        }
+    }];
 }
 
 @end
