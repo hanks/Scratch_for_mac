@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PanelView : NSView
-
-@property (strong) NSMutableDictionary *m_activeTouches;
+@interface PanelView : NSView 
 
 @end

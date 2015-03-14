@@ -19,23 +19,54 @@
 #define D_FINGER_CURSOR_BLUE 0.0
 #define D_FINGER_CURSOR_ALPHA 0.5
 
+@interface PanelView() {
+    BOOL m_cursorIsHidden;
+    BOOL m_mouseIsInView;
+}
+
+@property (strong, nonatomic) NSMutableDictionary *m_activeTouches;
+
+@end
 
 @implementation PanelView
 
-@synthesize m_activeTouches;
-
 - (void)awakeFromNib {
-    m_activeTouches = [[NSMutableDictionary alloc] init];
+    // init
+    _m_activeTouches = [[NSMutableDictionary alloc] init];
+    m_cursorIsHidden = NO;
+    m_mouseIsInView = NO;
     
     // Accept trackpad events
     self.acceptsTouchEvents = YES;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
+- (void)drawFocusRing {
+    // Preserve the graphics content
+    // so that other things we draw
+    // don't get focus rings
+    [NSGraphicsContext saveGraphicsState];
+    // color the background transparent
+    [[NSColor clearColor] set];
+    // If this view has accepted first responder
+    // it should draw the focus ring
+    if ([[self window] firstResponder] == self &&
+        (YES == m_mouseIsInView))
+    {
+        NSSetFocusRingStyle(NSFocusRingAbove);
+    }
+    // Fill the view with fully transparent
+    // color so that we can see through it
+    // to whatever is below
+    [[NSBezierPath bezierPathWithRect:[self bounds]] fill];
+    // Restore the graphics content
+    // so that other things we draw
+    // don't get focus rings
+    [NSGraphicsContext restoreGraphicsState];
+}
+
+- (void)drawTouchPoint {
     // For each active touch
-    for (NSTouch *l_touch in m_activeTouches.allValues)
+    for (NSTouch *l_touch in self.m_activeTouches.allValues)
     {
         // Create a rectangle reference to hold the
         // location of the cursor
@@ -58,7 +89,7 @@
         // Set the color of the cursor
         [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
                                green: D_FINGER_CURSOR_GREEN
-                                blue: D_FINGER_CURSOR_BLUE 
+                                blue: D_FINGER_CURSOR_BLUE
                                alpha: D_FINGER_CURSOR_ALPHA] set];
         
         // Draw the cursor as a circle
@@ -66,12 +97,75 @@
     }
 }
 
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    [self drawFocusRing];
+    [self drawTouchPoint];
+}
+
 - (BOOL)acceptsFirstResponder {
     return YES;
 }
 
+# pragma mark -- Mouse Evnet
+- (void)viewDidMoveToWindow {
+    // is the view window valid
+    if ([self window] != nil) {
+        // add a tracking rect such that
+        // mouse entered, and mouse exited;
+        // method will be automatically invoked
+        [self addTrackingRect:[self bounds]
+                        owner:self
+                     userData:NULL
+                 assumeInside:NO];
+    }
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent {
+    DDLogInfo(@"mouse enter");
+    m_mouseIsInView = YES;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)mouseExited:(NSEvent *)theEvent {
+    DDLogInfo(@"mouse exit");
+    m_mouseIsInView = NO;
+    [self setNeedsDisplay:YES];
+}
+
+# pragma mark -- Touch Evnet
+
+- (void)hideMouseCursor {
+    // If the mouse curosr is not already hidden
+    if (NO == m_cursorIsHidden) {
+        CGAssociateMouseAndMouseCursorPosition(false);
+        
+        // hide the mousr cursor
+        [NSCursor hide];
+        
+        // remember that we detached and hide the mousr cursor
+        m_cursorIsHidden = YES;
+    }
+}
+
+- (void)showMouseCursor {
+    // If the mouse curosr is not already hidden
+    if (YES == m_cursorIsHidden) {
+        CGAssociateMouseAndMouseCursorPosition(true);
+        
+        // hide the mousr cursor
+        [NSCursor unhide];
+        
+        // remember that we detached and hide the mousr cursor
+        m_cursorIsHidden = NO;
+    }
+}
+
 - (void)touchesBeganWithEvent:(NSEvent *)event {
     DDLogInfo(@"began touch");
+    // hide mouse cursur
+    [self hideMouseCursor];
     
     // Get the set of began touches
     NSSet *l_touches =
@@ -81,9 +175,8 @@
     // For each began touch, add the touch
     // to the active touches dictionary
     // using its identity as the key
-    for (NSTouch *l_touch in l_touches)
-    {
-        [m_activeTouches setObject:l_touch forKey:l_touch.
+    for (NSTouch *l_touch in l_touches) {
+        [self.m_activeTouches setObject:l_touch forKey:l_touch.
          identity];
     }
     
@@ -102,13 +195,11 @@
     // For each move touch, update the touch
     // in the active touches dictionary
     // using its identity as the key
-    for (NSTouch *l_touch in l_touches)
-    {
+    for (NSTouch *l_touch in l_touches) {
         // Update the touch only if it is found
         // in the active touches dictionary
-        if ([m_activeTouches objectForKey:l_touch.identity])
-        {
-            [m_activeTouches setObject:l_touch
+        if ([self.m_activeTouches objectForKey:l_touch.identity]) {
+            [self.m_activeTouches setObject:l_touch
                                 forKey:l_touch.identity];
         }
     }
@@ -129,9 +220,13 @@
     // For each ended touch, remove the touch
     // from the active touches dictionary
     // using its identity as the key
-    for (NSTouch *l_touch in l_touches)
-    {
-        [m_activeTouches removeObjectForKey:l_touch.identity];
+    for (NSTouch *l_touch in l_touches) {
+        [self.m_activeTouches removeObjectForKey:l_touch.identity];
+    }
+    
+    // show mouse cursor if needed
+    if (0 == [self.m_activeTouches count]) {
+        [self showMouseCursor];
     }
     
     // Redisplay the view
@@ -149,9 +244,13 @@
     // For each cancelled touch, remove the touch
     // from the active touches dictionary
     // using its identity as the key
-    for (NSTouch *l_touch in l_touches)
-    {
-        [m_activeTouches removeObjectForKey:l_touch.identity];
+    for (NSTouch *l_touch in l_touches) {
+        [self.m_activeTouches removeObjectForKey:l_touch.identity];
+    }
+    
+    // show mouse cursor if needed
+    if (0 == [self.m_activeTouches count]) {
+        [self showMouseCursor];
     }
     
     // Redisplay the view
