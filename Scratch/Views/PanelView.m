@@ -8,6 +8,7 @@
 
 #import "PanelView.h"
 #import "ScratchStroke.h"
+#import "ScratchStrokeView.h"
 
 // Define the size of the cursor that
 // will be drawn in the view for each
@@ -23,6 +24,8 @@ static const CGFloat kFingerCursorAlpha = 0.5f;
 static const NSInteger kDoubleClickCount = 2;
 // width of stroke
 static const CGFloat kStrokeWidth = 2.0f;
+
+#define D_MIN_POINTS 2
 
 @interface PanelView() {
     BOOL m_cursorIsHidden;
@@ -366,12 +369,23 @@ static const CGFloat kStrokeWidth = 2.0f;
     [event touchesMatchingPhase:NSTouchPhaseEnded
                          inView:self];
     
-    
+    ScratchStrokeView *l_strokeView = (ScratchStrokeView *)[self superview];
     // For each ended touch, remove the touch
     // from the active touches dictionary
     // using its identity as the key
     for (NSTouch *l_touch in l_touches) {
         if ([self.m_activeTouches objectForKey:l_touch.identity]) {
+            // Get the active stroke for the touch
+            ScratchStroke *l_stroke = self.m_activeStrokes[l_touch.identity];
+            
+            // If the stroke has at least 2 points
+            // in it add it to the stroke view
+            // object
+            if (l_stroke.m_points.count > D_MIN_POINTS) {
+                [l_strokeView addStroke: l_stroke];
+                [l_strokeView setNeedsDisplay:YES];
+            }
+            
             [self.m_activeTouches removeObjectForKey:l_touch.identity];
             [self.m_activeStrokes removeObjectForKey:l_touch.identity];
         }

@@ -10,6 +10,7 @@
 		1797955B1AB3BB01004982A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1797955A1AB3BB01004982A1 /* Podfile */; };
 		179795611AB40C3E004982A1 /* ScratchPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 179795601AB40C3E004982A1 /* ScratchPoint.m */; };
 		179795641AB42359004982A1 /* ScratchStroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 179795631AB42359004982A1 /* ScratchStroke.m */; };
+		179795671AB43D08004982A1 /* ScratchStrokeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 179795661AB43D08004982A1 /* ScratchStrokeView.m */; };
 		17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940181A8CF44D0018A28D /* AppDelegate.m */; };
 		17B9401B1A8CF44D0018A28D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9401A1A8CF44D0018A28D /* main.m */; };
 		17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401C1A8CF44D0018A28D /* Images.xcassets */; };
@@ -36,6 +37,8 @@
 		179795601AB40C3E004982A1 /* ScratchPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScratchPoint.m; sourceTree = "<group>"; };
 		179795621AB42359004982A1 /* ScratchStroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScratchStroke.h; sourceTree = "<group>"; };
 		179795631AB42359004982A1 /* ScratchStroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScratchStroke.m; sourceTree = "<group>"; };
+		179795651AB43D08004982A1 /* ScratchStrokeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScratchStrokeView.h; sourceTree = "<group>"; };
+		179795661AB43D08004982A1 /* ScratchStrokeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScratchStrokeView.m; sourceTree = "<group>"; };
 		17B940121A8CF44D0018A28D /* Scratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B940161A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B940171A8CF44D0018A28D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 		1799BA431AAC9D1D002397FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				179795651AB43D08004982A1 /* ScratchStrokeView.h */,
+				179795661AB43D08004982A1 /* ScratchStrokeView.m */,
 				17B940351A8CF4E00018A28D /* PanelView.h */,
 				17B940361A8CF4E00018A28D /* PanelView.m */,
 			);
@@ -319,6 +324,7 @@
 				17B940371A8CF4E00018A28D /* PanelView.m in Sources */,
 				179795611AB40C3E004982A1 /* ScratchPoint.m in Sources */,
 				179795641AB42359004982A1 /* ScratchStroke.m in Sources */,
+				179795671AB43D08004982A1 /* ScratchStrokeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

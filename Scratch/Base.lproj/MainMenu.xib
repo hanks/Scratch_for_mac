@@ -96,10 +96,21 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="350" height="300"/>
             <value key="maxSize" type="size" width="700" height="600"/>
-            <view key="contentView" id="EiT-Mj-1SZ" customClass="PanelView">
+            <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuY-da-idN" customClass="ScratchStrokeView">
+                        <rect key="frame" x="0.0" y="0.0" width="706" height="600"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3J9-2W-AiQ" customClass="PanelView">
+                                <rect key="frame" x="0.0" y="0.0" width="706" height="600"/>
+                            </customView>
+                        </subviews>
+                    </customView>
+                </subviews>
             </view>
+            <point key="canvasLocation" x="395" y="373"/>
         </window>
     </objects>
 </document>
