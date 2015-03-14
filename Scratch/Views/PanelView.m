@@ -11,17 +11,20 @@
 // Define the size of the cursor that
 // will be drawn in the view for each
 // finger on the trackpad
-#define D_FINGER_CURSOR_SIZE 20
+static const NSInteger kFingerCursorSize = 20;
 // Define the color values that will
 // be used for the finger cursor
-#define D_FINGER_CURSOR_RED 1.0
-#define D_FINGER_CURSOR_GREEN 0.0
-#define D_FINGER_CURSOR_BLUE 0.0
-#define D_FINGER_CURSOR_ALPHA 0.5
+static const CGFloat kFingerCursorRed = 1.0;
+static const CGFloat kFingerCursorGreen = 0.0;
+static const CGFloat kFingerCursorBlue = 0.0;
+static const CGFloat kFingerCursorAlpha = 0.5;
+// click number for double click detectin
+static const NSInteger kDoubleClickCount = 2;
 
 @interface PanelView() {
     BOOL m_cursorIsHidden;
     BOOL m_mouseIsInView;
+    BOOL m_switchIsOn;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *m_activeTouches;
@@ -35,6 +38,7 @@
     _m_activeTouches = [[NSMutableDictionary alloc] init];
     m_cursorIsHidden = NO;
     m_mouseIsInView = NO;
+    m_switchIsOn = NO;
     
     // Accept trackpad events
     self.acceptsTouchEvents = YES;
@@ -50,8 +54,7 @@
     // If this view has accepted first responder
     // it should draw the focus ring
     if ([[self window] firstResponder] == self &&
-        (YES == m_mouseIsInView))
-    {
+        (YES == m_mouseIsInView)) {
         NSSetFocusRingStyle(NSFocusRingAbove);
     }
     // Fill the view with fully transparent
@@ -79,18 +82,18 @@
         l_touchNP.y = l_touchNP.y * [self bounds].size.height;
         
         // Calculate the rectangle around the cursor
-        l_cursor.origin.x = l_touchNP.x - (D_FINGER_CURSOR_SIZE /
+        l_cursor.origin.x = l_touchNP.x - (kFingerCursorSize /
                                            2);
-        l_cursor.origin.y = l_touchNP.y - (D_FINGER_CURSOR_SIZE /
+        l_cursor.origin.y = l_touchNP.y - (kFingerCursorSize /
                                            2);
-        l_cursor.size.width = D_FINGER_CURSOR_SIZE;
-        l_cursor.size.height = D_FINGER_CURSOR_SIZE;
+        l_cursor.size.width = kFingerCursorSize;
+        l_cursor.size.height = kFingerCursorSize;
         
         // Set the color of the cursor
-        [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
-                               green: D_FINGER_CURSOR_GREEN
-                                blue: D_FINGER_CURSOR_BLUE
-                               alpha: D_FINGER_CURSOR_ALPHA] set];
+        [[NSColor colorWithDeviceRed: kFingerCursorRed
+                               green: kFingerCursorGreen
+                                blue: kFingerCursorBlue
+                               alpha: kFingerCursorAlpha] set];
         
         // Draw the cursor as a circle
         [[NSBezierPath bezierPathWithOvalInRect: l_cursor] fill];
@@ -100,8 +103,10 @@
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    [self drawFocusRing];
-    [self drawTouchPoint];
+    if (m_switchIsOn) {
+        [self drawFocusRing];
+        [self drawTouchPoint];
+    }
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -134,11 +139,25 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent {
+    if ([theEvent clickCount] == kDoubleClickCount) {
+        DDLogInfo(@"double click");
+        if (m_switchIsOn) {
+            [self showMouseCursor];
+        } else {
+            [self hideMouseCursor];
+        }
+        
+        m_switchIsOn = !m_switchIsOn;
+    }
+}
+
 # pragma mark -- Touch Evnet
 
 - (void)hideMouseCursor {
     // If the mouse curosr is not already hidden
     if (NO == m_cursorIsHidden) {
+        DDLogInfo(@"hide mouse curse");
         CGAssociateMouseAndMouseCursorPosition(false);
         
         // hide the mousr cursor
@@ -152,6 +171,7 @@
 - (void)showMouseCursor {
     // If the mouse curosr is not already hidden
     if (YES == m_cursorIsHidden) {
+        DDLogInfo(@"show mouse curse");
         CGAssociateMouseAndMouseCursorPosition(true);
         
         // hide the mousr cursor
@@ -164,8 +184,6 @@
 
 - (void)touchesBeganWithEvent:(NSEvent *)event {
     DDLogInfo(@"began touch");
-    // hide mouse cursur
-    [self hideMouseCursor];
     
     // Get the set of began touches
     NSSet *l_touches =
@@ -185,8 +203,6 @@
 }
 
 - (void)touchesMovedWithEvent:(NSEvent *)event {
-    DDLogInfo(@"move touch");
-    
     NSSet *l_touches =
     [event touchesMatchingPhase:NSTouchPhaseMoved
                          inView:self];
@@ -224,11 +240,6 @@
         [self.m_activeTouches removeObjectForKey:l_touch.identity];
     }
     
-    // show mouse cursor if needed
-    if (0 == [self.m_activeTouches count]) {
-        [self showMouseCursor];
-    }
-    
     // Redisplay the view
     [self setNeedsDisplay:YES];
 }
@@ -247,12 +258,7 @@
     for (NSTouch *l_touch in l_touches) {
         [self.m_activeTouches removeObjectForKey:l_touch.identity];
     }
-    
-    // show mouse cursor if needed
-    if (0 == [self.m_activeTouches count]) {
-        [self showMouseCursor];
-    }
-    
+
     // Redisplay the view
     [self setNeedsDisplay:YES];
 }
