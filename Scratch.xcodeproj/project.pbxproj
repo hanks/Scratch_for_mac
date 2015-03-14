@@ -86,13 +86,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1799BA421AAC9D1D002397FF /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		1799BA431AAC9D1D002397FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +124,6 @@
 				17B940171A8CF44D0018A28D /* AppDelegate.h */,
 				17B940181A8CF44D0018A28D /* AppDelegate.m */,
 				1799BA411AAC9D1D002397FF /* Models */,
-				1799BA421AAC9D1D002397FF /* ViewControllers */,
 				1799BA431AAC9D1D002397FF /* Views */,
 				17B9401C1A8CF44D0018A28D /* Images.xcassets */,
 				17B9401E1A8CF44D0018A28D /* MainMenu.xib */,

@@ -433,6 +433,16 @@ static const NSInteger kMinPoints = 2;
     newRect.origin.y = window.frame.origin.y;
     
     [window setFrame:newRect display:YES];
+    
+    // set self view size
+    NSRect f = self.frame;
+    f.size.height = newRect.size.height;
+    f.size.width = newRect.size.width;
+    self.frame = f;
+    
+    // set stroke view size
+    NSView *strokeView = [self superview];
+    strokeView.frame = f;
 }
 
 @end
