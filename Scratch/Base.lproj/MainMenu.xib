@@ -43,14 +43,21 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="File" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
-                                <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
                                 <connections>
                                     <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="SBq-Z5-TXF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="R4s-IA-FvA">
+                        <items>
+                            <menuItem title="Clear" keyEquivalent="r" id="3yc-Zv-x3x">
+                                <connections>
+                                    <action selector="clear:" target="3J9-2W-AiQ" id="etV-lA-3lI"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -110,7 +117,7 @@
                     </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="395" y="373"/>
+            <point key="canvasLocation" x="370" y="445"/>
         </window>
     </objects>
 </document>

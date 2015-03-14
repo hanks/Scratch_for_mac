@@ -445,4 +445,10 @@ static const NSInteger kMinPoints = 2;
     strokeView.frame = f;
 }
 
+#pragma mark -- Menu Action
+
+- (IBAction)clear:(id)sender {
+    [(ScratchStrokeView *)[self superview] clear];
+}
+
 @end
