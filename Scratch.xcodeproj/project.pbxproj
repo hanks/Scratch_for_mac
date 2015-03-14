@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1797955B1AB3BB01004982A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1797955A1AB3BB01004982A1 /* Podfile */; };
+		179795611AB40C3E004982A1 /* ScratchPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 179795601AB40C3E004982A1 /* ScratchPoint.m */; };
 		17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940181A8CF44D0018A28D /* AppDelegate.m */; };
 		17B9401B1A8CF44D0018A28D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9401A1A8CF44D0018A28D /* main.m */; };
 		17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401C1A8CF44D0018A28D /* Images.xcassets */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		1797955A1AB3BB01004982A1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1797955E1AB3C19B004982A1 /* OSX_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSX_Prefix.pch; sourceTree = "<group>"; };
+		1797955F1AB40C3E004982A1 /* ScratchPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScratchPoint.h; sourceTree = "<group>"; };
+		179795601AB40C3E004982A1 /* ScratchPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScratchPoint.m; sourceTree = "<group>"; };
 		17B940121A8CF44D0018A28D /* Scratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B940161A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B940171A8CF44D0018A28D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 		1799BA411AAC9D1D002397FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1797955F1AB40C3E004982A1 /* ScratchPoint.h */,
+				179795601AB40C3E004982A1 /* ScratchPoint.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				17B9401B1A8CF44D0018A28D /* main.m in Sources */,
 				17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */,
 				17B940371A8CF4E00018A28D /* PanelView.m in Sources */,
+				179795611AB40C3E004982A1 /* ScratchPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
