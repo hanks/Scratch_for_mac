@@ -263,4 +263,20 @@ static const NSInteger kDoubleClickCount = 2;
     [self setNeedsDisplay:YES];
 }
 
+# pragma mark -- Gesture event
+- (void)magnifyWithEvent:(NSEvent *)event {
+    CGFloat magcificaton = [event magnification];
+    DDLogInfo(@"magnification value: %lf", magcificaton);
+    
+    // set window size
+    NSWindow *w = [self window];
+    NSRect newRect;
+    newRect.size.width = w.frame.size.width * (magcificaton / 2 + 1.0);
+    newRect.size.height = w.frame.size.height * (magcificaton / 2 + 1.0);
+    newRect.origin.x = w.frame.origin.x;
+    newRect.origin.y = w.frame.origin.y;
+    
+    [w setFrame:newRect display:YES];
+}
+
 @end
