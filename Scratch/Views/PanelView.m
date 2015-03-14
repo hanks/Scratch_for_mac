@@ -8,57 +8,66 @@
 
 #import "PanelView.h"
 
+// Define the size of the cursor that
+// will be drawn in the view for each
+// finger on the trackpad
+#define D_FINGER_CURSOR_SIZE 20
+// Define the color values that will
+// be used for the finger cursor
+#define D_FINGER_CURSOR_RED 1.0
+#define D_FINGER_CURSOR_GREEN 0.0
+#define D_FINGER_CURSOR_BLUE 0.0
+#define D_FINGER_CURSOR_ALPHA 0.5
+
+
 @implementation PanelView
 
 @synthesize m_activeTouches;
 
-- (id)initWithFrame:(NSRect)frameRect {
-    self = [super initWithFrame:frameRect];
-    if (self) {
-        // init
-        m_activeTouches = [[NSMutableDictionary alloc] init];
-        
-        // Accept trackpad events
-        [self setAcceptsTouchEvents:YES];
-    }
+- (void)awakeFromNib {
+    DDLogInfo(@"here");
+    m_activeTouches = [[NSMutableDictionary alloc] init];
     
-    return self;
+    // Accept trackpad events
+    self.acceptsTouchEvents = YES;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
+    DDLogInfo(@"dddd");
+    
     // Drawing code here.
     // For each active touch
-    for (NSTouch *l_touch in m_activeTouches.allValues)
-    {
-        // Create a rectangle reference to hold the
-        // location of the cursor
-        NSRect l_cursor;
-        
-        // Determine where the touch point
-        NSPoint l_touchNP = [l_touch normalizedPosition];
-        // Calculate the pixel position of the touch point
-        l_touchNP.x = l_touchNP.x * [self bounds].size.width;
-        l_touchNP.y = l_touchNP.y * [self bounds].size.height;
-        
-        // Calculate the rectangle around the cursor
-        l_cursor.origin.x = l_touchNP.x - (D_FINGER_CURSOR_SIZE /
-                                           2);
-        l_cursor.origin.y = l_touchNP.y - (D_FINGER_CURSOR_SIZE /
-                                           2);
-        l_cursor.size.width = D_FINGER_CURSOR_SIZE;
-        l_cursor.size.height = D_FINGER_CURSOR_SIZE;
-        
-        // Set the color of the cursor
-        [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
-                               green: D_FINGER_CURSOR_GREEN
-                                blue: D_FINGER_CURSOR_BLUE 
-                               alpha: D_FINGER_CURSOR_ALPHA] set];
-        
-        // Draw the cursor as a circle
-        [[NSBezierPath bezierPathWithOvalInRect: l_cursor] fill];
-    }
+//    for (NSTouch *l_touch in m_activeTouches.allValues)
+//    {
+//        // Create a rectangle reference to hold the
+//        // location of the cursor
+//        NSRect l_cursor;
+//        
+//        // Determine where the touch point
+//        NSPoint l_touchNP = [l_touch normalizedPosition];
+//        // Calculate the pixel position of the touch point
+//        l_touchNP.x = l_touchNP.x * [self bounds].size.width;
+//        l_touchNP.y = l_touchNP.y * [self bounds].size.height;
+//        
+//        // Calculate the rectangle around the cursor
+//        l_cursor.origin.x = l_touchNP.x - (D_FINGER_CURSOR_SIZE /
+//                                           2);
+//        l_cursor.origin.y = l_touchNP.y - (D_FINGER_CURSOR_SIZE /
+//                                           2);
+//        l_cursor.size.width = D_FINGER_CURSOR_SIZE;
+//        l_cursor.size.height = D_FINGER_CURSOR_SIZE;
+//        
+//        // Set the color of the cursor
+//        [[NSColor colorWithDeviceRed: D_FINGER_CURSOR_RED
+//                               green: D_FINGER_CURSOR_GREEN
+//                                blue: D_FINGER_CURSOR_BLUE 
+//                               alpha: D_FINGER_CURSOR_ALPHA] set];
+//        
+//        // Draw the cursor as a circle
+//        [[NSBezierPath bezierPathWithOvalInRect: l_cursor] fill];
+//    }
     
     // preserve the graphics content
     [NSGraphicsContext saveGraphicsState];

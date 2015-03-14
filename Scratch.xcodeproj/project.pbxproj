@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1797955B1AB3BB01004982A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1797955A1AB3BB01004982A1 /* Podfile */; };
 		17B940191A8CF44D0018A28D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940181A8CF44D0018A28D /* AppDelegate.m */; };
 		17B9401B1A8CF44D0018A28D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9401A1A8CF44D0018A28D /* main.m */; };
 		17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401C1A8CF44D0018A28D /* Images.xcassets */; };
 		17B940201A8CF44D0018A28D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B9401E1A8CF44D0018A28D /* MainMenu.xib */; };
 		17B9402C1A8CF44D0018A28D /* ScratchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B9402B1A8CF44D0018A28D /* ScratchTests.m */; };
 		17B940371A8CF4E00018A28D /* PanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B940361A8CF4E00018A28D /* PanelView.m */; };
+		425FC39C806EC35CA513D272 /* libPods-Scratch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E901B6F956E8FF100C7E311E /* libPods-Scratch.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1797955A1AB3BB01004982A1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1797955E1AB3C19B004982A1 /* OSX_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSX_Prefix.pch; sourceTree = "<group>"; };
 		17B940121A8CF44D0018A28D /* Scratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B940161A8CF44D0018A28D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B940171A8CF44D0018A28D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,6 +42,9 @@
 		17B9402B1A8CF44D0018A28D /* ScratchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScratchTests.m; sourceTree = "<group>"; };
 		17B940351A8CF4E00018A28D /* PanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelView.h; sourceTree = "<group>"; };
 		17B940361A8CF4E00018A28D /* PanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelView.m; sourceTree = "<group>"; };
+		C234F14FDC2AE668914BAD21 /* Pods-Scratch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Scratch/Pods-Scratch.release.xcconfig"; sourceTree = "<group>"; };
+		E81483CE341FAF5FED0772E8 /* Pods-Scratch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scratch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Scratch/Pods-Scratch.debug.xcconfig"; sourceTree = "<group>"; };
+		E901B6F956E8FF100C7E311E /* libPods-Scratch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Scratch.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425FC39C806EC35CA513D272 /* libPods-Scratch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +92,12 @@
 		17B940091A8CF44D0018A28D = {
 			isa = PBXGroup;
 			children = (
+				1797955A1AB3BB01004982A1 /* Podfile */,
 				17B940141A8CF44D0018A28D /* Scratch */,
 				17B940281A8CF44D0018A28D /* ScratchTests */,
 				17B940131A8CF44D0018A28D /* Products */,
+				1CA2D108B510D9B295B38AA9 /* Pods */,
+				A0DFBC833A55F1B2573F9718 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +130,7 @@
 			children = (
 				17B940161A8CF44D0018A28D /* Info.plist */,
 				17B9401A1A8CF44D0018A28D /* main.m */,
+				1797955E1AB3C19B004982A1 /* OSX_Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -140,6 +152,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1CA2D108B510D9B295B38AA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E81483CE341FAF5FED0772E8 /* Pods-Scratch.debug.xcconfig */,
+				C234F14FDC2AE668914BAD21 /* Pods-Scratch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A0DFBC833A55F1B2573F9718 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E901B6F956E8FF100C7E311E /* libPods-Scratch.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17B9402F1A8CF44D0018A28D /* Build configuration list for PBXNativeTarget "Scratch" */;
 			buildPhases = (
+				3841F65A8FE97E8C420942AF /* Check Pods Manifest.lock */,
 				17B9400E1A8CF44D0018A28D /* Sources */,
 				17B9400F1A8CF44D0018A28D /* Frameworks */,
 				17B940101A8CF44D0018A28D /* Resources */,
+				D24834947609E1BA81986B6C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1797955B1AB3BB01004982A1 /* Podfile in Resources */,
 				17B9401D1A8CF44D0018A28D /* Images.xcassets in Resources */,
 				17B940201A8CF44D0018A28D /* MainMenu.xib in Resources */,
 			);
@@ -233,6 +265,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3841F65A8FE97E8C420942AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D24834947609E1BA81986B6C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Scratch/Pods-Scratch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17B9400E1A8CF44D0018A28D /* Sources */ = {
@@ -292,7 +357,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -312,7 +377,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.10;
 			};
 			name = Debug;
 		};
@@ -333,7 +398,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -347,15 +412,18 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.10;
 			};
 			name = Release;
 		};
 		17B940301A8CF44D0018A28D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E81483CE341FAF5FED0772E8 /* Pods-Scratch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Scratch/OSX_Prefix.pch";
 				INFOPLIST_FILE = Scratch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -364,9 +432,12 @@
 		};
 		17B940311A8CF44D0018A28D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C234F14FDC2AE668914BAD21 /* Pods-Scratch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Scratch/OSX_Prefix.pch";
 				INFOPLIST_FILE = Scratch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

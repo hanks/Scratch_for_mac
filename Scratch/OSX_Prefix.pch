@@ -1,0 +1,20 @@
+//
+//  OSX_Prefix.pch
+//  Scratch
+//
+//  Created by hanks on 3/14/15.
+//  Copyright (c) 2015 com.hanks. All rights reserved.
+//
+
+#ifndef Scratch_OSX_Prefix_pch
+#define Scratch_OSX_Prefix_pch
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+#endif
+
+#ifdef DEBUG
+static const int ddLogLevel = DDLogLevelVerbose;
+#else
+static const int ddLogLevel = DDLogLevelOff;
+#endif

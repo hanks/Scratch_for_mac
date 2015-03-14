@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D799E6D9-670F-4335-8304-9AA87574F8E6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Scratch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B465E7591C43A463E944BCAA2B5C9838EAA6638F</key>
+		<string>bitbucket.org:hanks315/scratch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Scratch.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B465E7591C43A463E944BCAA2B5C9838EAA6638F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:hanks315/scratch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B465E7591C43A463E944BCAA2B5C9838EAA6638F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B465E7591C43A463E944BCAA2B5C9838EAA6638F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Scratch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

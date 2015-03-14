@@ -17,6 +17,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    // add lumberjack log instance globally
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    // set color enable to log
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
