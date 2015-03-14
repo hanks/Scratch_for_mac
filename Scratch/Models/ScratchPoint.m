@@ -42,4 +42,8 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@: %p, x: %f, y: %f>", NSStringFromClass([self class]), self, [self x], [self y]];
+}
+
 @end

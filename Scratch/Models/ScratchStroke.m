@@ -33,6 +33,8 @@
         m_blue = aBlue;
         m_alpha = aAlpha;
         m_width = aWidth;
+        
+        self.m_points = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -48,11 +50,11 @@
           powf(l_lastPoint.y - aPoint.y, 2));
     
     // Ignore the point if it is too close
-    if (l_distance < D_TOO_CLOSE)
-    {
+    if (l_distance < D_TOO_CLOSE) {
+        DDLogInfo(@"too close! skip to add point");
         return;
     }
-    
+    DDLogInfo(@"add point: %@", aPoint);
     // Add the new point to the stroke
     [self.m_points addObject:aPoint];
 }
@@ -112,6 +114,10 @@
     }
     
     return self;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@: %p, points count: %zd>", NSStringFromClass([self class]), self, [self.m_points count]];
 }
 
 @end

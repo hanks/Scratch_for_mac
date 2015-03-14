@@ -7,6 +7,7 @@
 //
 
 #import "PanelView.h"
+#import "ScratchStroke.h"
 
 // Define the size of the cursor that
 // will be drawn in the view for each
@@ -14,12 +15,14 @@
 static const NSInteger kFingerCursorSize = 20;
 // Define the color values that will
 // be used for the finger cursor
-static const CGFloat kFingerCursorRed = 1.0;
-static const CGFloat kFingerCursorGreen = 0.0;
-static const CGFloat kFingerCursorBlue = 0.0;
-static const CGFloat kFingerCursorAlpha = 0.5;
+static const CGFloat kFingerCursorRed = 1.0f;
+static const CGFloat kFingerCursorGreen = 0.0f;
+static const CGFloat kFingerCursorBlue = 0.0f;
+static const CGFloat kFingerCursorAlpha = 0.5f;
 // click number for double click detectin
 static const NSInteger kDoubleClickCount = 2;
+// width of stroke
+static const CGFloat kStrokeWidth = 2.0f;
 
 @interface PanelView() {
     BOOL m_cursorIsHidden;
@@ -28,6 +31,7 @@ static const NSInteger kDoubleClickCount = 2;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *m_activeTouches;
+@property (strong, nonatomic) NSMutableDictionary *m_activeStrokes;
 
 @end
 
@@ -36,6 +40,7 @@ static const NSInteger kDoubleClickCount = 2;
 - (void)awakeFromNib {
     // init
     _m_activeTouches = [[NSMutableDictionary alloc] init];
+    _m_activeStrokes = [[NSMutableDictionary alloc] init];
     m_cursorIsHidden = NO;
     m_mouseIsInView = NO;
     m_switchIsOn = NO;
@@ -100,12 +105,87 @@ static const NSInteger kDoubleClickCount = 2;
     }
 }
 
+- (void)drawStroke {
+    // Get the current graphics context
+    NSGraphicsContext *	l_GraphicsContext = [NSGraphicsContext currentContext];
+    
+    // Get the low level Core Graphics context
+    // from the high level NSGraphicsContext
+    // so that we can use Core Graphics to
+    // draw
+    CGContextRef l_CGContextRef	= (CGContextRef) [l_GraphicsContext graphicsPort];
+
+    // We will need to reference the array of
+    // points in each store
+    NSMutableArray *l_points;
+    
+    // We will need a reference to individual
+    // points
+    ScratchPoint *l_point;
+    
+    // We will need to know how many points
+    // are in each stroke
+    NSUInteger l_pointCount;
+    
+    // We will need a reference to the
+    // first point in each stroke
+    ScratchPoint *l_firsttPoint;
+    
+    // For all of the active strokes
+    for (ScratchStroke *l_stroke in self.m_activeStrokes.allValues ) {
+        // Set the stroke width for line
+        // drawing
+        CGContextSetLineWidth(l_CGContextRef,
+                              [l_stroke width]);
+        
+        // Set the color for line drawing
+        CGContextSetRGBStrokeColor(l_CGContextRef,
+                                   [l_stroke red],
+                                   [l_stroke green],
+                                   [l_stroke blue],
+                                   [l_stroke alpha]);
+        // Get the array of points
+        l_points = [l_stroke points];
+        
+        // Get the number of points
+        l_pointCount = [l_points count];
+        
+        // Get the first point
+        l_firsttPoint = [l_points objectAtIndex:0];
+        
+        // Create a new path
+        CGContextBeginPath(l_CGContextRef);
+        
+        // Move to the first point of the stroke
+        CGContextMoveToPoint(l_CGContextRef,
+                             [l_firsttPoint x],
+                             [l_firsttPoint y]);
+        
+        // For the remaining points
+        for (NSUInteger i = 1; i < l_pointCount; i++) {
+            // note the index starts at 1
+            // Get the SECOND point
+            l_point = [l_points objectAtIndex:i];
+            
+            // Add a line segment to the stroke
+            CGContextAddLineToPoint(l_CGContextRef,
+                                    [l_point x],
+                                    [l_point y]);
+        }
+        
+        // Draw the path
+        CGContextDrawPath(l_CGContextRef,kCGPathStroke);
+        
+    }
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
     if (m_switchIsOn) {
         [self drawFocusRing];
         [self drawTouchPoint];
+        [self drawStroke];
     }
 }
 
@@ -152,18 +232,6 @@ static const NSInteger kDoubleClickCount = 2;
     }
 }
 
-#pragma mark -- Right Mouse Event
-
-- (void)rightMouseDragged:(NSEvent *)theEvent {
-    DDLogInfo(@"right mouse dragged");
-    NSWindow *window = [self window];
-    NSPoint windowOrigin = [window frame].origin;
-    
-    [window setFrameOrigin:NSMakePoint(windowOrigin.x + [theEvent deltaX], windowOrigin.y - [theEvent deltaY])];
-}
-
-# pragma mark -- Touch Evnet
-
 - (void)hideMouseCursor {
     // If the mouse curosr is not already hidden
     if (NO == m_cursorIsHidden) {
@@ -192,7 +260,22 @@ static const NSInteger kDoubleClickCount = 2;
     }
 }
 
+#pragma mark -- Right Mouse Event
+
+- (void)rightMouseDragged:(NSEvent *)theEvent {
+    DDLogInfo(@"right mouse dragged");
+    NSWindow *window = [self window];
+    NSPoint windowOrigin = [window frame].origin;
+    
+    [window setFrameOrigin:NSMakePoint(windowOrigin.x + [theEvent deltaX], windowOrigin.y - [theEvent deltaY])];
+}
+
+# pragma mark -- Touch Evnet
+
 - (void)touchesBeganWithEvent:(NSEvent *)event {
+    if (!m_switchIsOn) {
+        return ;
+    }
     DDLogInfo(@"began touch");
     
     // Get the set of began touches
@@ -204,8 +287,26 @@ static const NSInteger kDoubleClickCount = 2;
     // to the active touches dictionary
     // using its identity as the key
     for (NSTouch *l_touch in l_touches) {
-        [self.m_activeTouches setObject:l_touch forKey:l_touch.
-         identity];
+        [self.m_activeTouches setObject:l_touch forKey:l_touch.identity];
+        
+        NSColor *l_color = [[NSColor blackColor] colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+        
+        // create a new stroke object with the color
+        ScratchStroke *l_stroke = [[ScratchStroke alloc] initWithWidth:kStrokeWidth
+                                                                   red:[l_color redComponent]
+                                                                 green:[l_color greenComponent]
+                                                                  blue:[l_color blueComponent]
+                                                                 alpha:[l_color alphaComponent]];
+        // add stroke to the array of active strokes
+        self.m_activeStrokes[l_touch.identity] = l_stroke;
+        NSPoint l_touchNP = [l_touch normalizedPosition];
+        l_touchNP.x = l_touchNP.x * self.bounds.size.width;
+        l_touchNP.y = l_touchNP.y * self.bounds.size.height;
+        
+        ScratchPoint *l_point = [[ScratchPoint alloc] initWithNSPoint:l_touchNP];
+        
+        // add point to the stroke
+        [l_stroke addPoint:l_point];
     }
     
     // Redisplay the view
@@ -213,6 +314,10 @@ static const NSInteger kDoubleClickCount = 2;
 }
 
 - (void)touchesMovedWithEvent:(NSEvent *)event {
+    if (!m_switchIsOn) {
+        return ;
+    }
+    
     NSSet *l_touches =
     [event touchesMatchingPhase:NSTouchPhaseMoved
                          inView:self];
@@ -225,8 +330,24 @@ static const NSInteger kDoubleClickCount = 2;
         // Update the touch only if it is found
         // in the active touches dictionary
         if ([self.m_activeTouches objectForKey:l_touch.identity]) {
-            [self.m_activeTouches setObject:l_touch
-                                forKey:l_touch.identity];
+            self.m_activeTouches[l_touch.identity] = l_touch;
+            
+            // Retrieve the stroke for this touch
+            ScratchStroke *l_Line = self.m_activeStrokes[l_touch.identity];
+            
+            // Create a new point at the location of the
+            // finger touch.  This is done by getting the
+            // normalized position (between 0 and 10 and
+            // calculating the position in the view
+            // bounds
+            NSPoint l_touchNP = [l_touch normalizedPosition];
+            l_touchNP.x = l_touchNP.x * self.bounds.size.width;
+            l_touchNP.y = l_touchNP.y * self.bounds.size.height;
+            ScratchPoint *l_point = [[ScratchPoint alloc]initWithNSPoint:l_touchNP];
+            
+            // Add the point to the stroke
+            DDLogInfo(@"add point %@", l_point);
+            [l_Line addPoint:l_point];
         }
     }
     
@@ -235,6 +356,9 @@ static const NSInteger kDoubleClickCount = 2;
 }
 
 - (void)touchesEndedWithEvent:(NSEvent *)event {
+    if (!m_switchIsOn) {
+        return ;
+    }
     DDLogInfo(@"end touch");
     
     // Get the set of ended touches
@@ -247,7 +371,10 @@ static const NSInteger kDoubleClickCount = 2;
     // from the active touches dictionary
     // using its identity as the key
     for (NSTouch *l_touch in l_touches) {
-        [self.m_activeTouches removeObjectForKey:l_touch.identity];
+        if ([self.m_activeTouches objectForKey:l_touch.identity]) {
+            [self.m_activeTouches removeObjectForKey:l_touch.identity];
+            [self.m_activeStrokes removeObjectForKey:l_touch.identity];
+        }
     }
     
     // Redisplay the view
@@ -255,6 +382,9 @@ static const NSInteger kDoubleClickCount = 2;
 }
 
 - (void)touchesCancelledWithEvent:(NSEvent *)event {
+    if (!m_switchIsOn) {
+        return ;
+    }
     DDLogInfo(@"cancel touch");
     
     // Get the set of cancelled touches
@@ -267,6 +397,7 @@ static const NSInteger kDoubleClickCount = 2;
     // using its identity as the key
     for (NSTouch *l_touch in l_touches) {
         [self.m_activeTouches removeObjectForKey:l_touch.identity];
+        [self.m_activeStrokes removeObjectForKey:l_touch.identity];
     }
 
     // Redisplay the view
