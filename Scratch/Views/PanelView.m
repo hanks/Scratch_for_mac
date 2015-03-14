@@ -477,7 +477,7 @@ static const NSInteger kMinPoints = 2;
 
 - (IBAction)helpAction:(id)sender {
     NSAlert *alert = [NSAlert alertWithMessageText:@"Help Message"
-                                         defaultButton:@"OK"
+                                         defaultButton:@"Got it"
                                        alternateButton:nil
                                            otherButton:nil
                              informativeTextWithFormat:@"This is a simple panel drawing app for macbook, you can use your tracepad to do some scratches work by handy.\n\nUsage:\n1. Double click to activate editor mode, or to detach editor mode.\n\n2. Menu Editor->Clear(Command+R) to clear all scratch.\n\n3. Right-click to drag window directly.\n\n4. Menu File->Save as(Shift+Command+S) to save your scratch to png file.\n\n5. Use zoom in/out gesture to resize window, but still a little buggy.\n\n Power By Hanks. Thank you for your using."];
@@ -485,7 +485,7 @@ static const NSInteger kMinPoints = 2;
     NSUInteger action = [alert runModal];
 
     if(action == NSAlertDefaultReturn) {
-        DDLogInfo(@"ok Button clicked!");
+        DDLogInfo(@"ok button clicked!");
     }
 }
 
