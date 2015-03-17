@@ -24,6 +24,9 @@ Download app from <a href='https://github.com/hanks/Scratch_for_mac/raw/master/D
 ## Uninstall
 Just move the app to your Trash can.
 
+## Implementation
+[Event handle](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/EventOverview/EventArchitecture/EventArchitecture.html), that's it.
+
 ## Development
 If you want to build for yourself, you need to install [cocoapods](http://cocoapods.org/) firstly, and run `pod install` in the root directory, then open `*.xcworkspace` file with Xcode.
 
